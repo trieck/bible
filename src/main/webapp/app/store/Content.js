@@ -5,7 +5,7 @@ Ext.define('pixieweb.store.Content', {
     pageSize: 25,
     proxy: {
         type: 'ajax',
-        url: '/pixieweb/ContentServlet',
+        url: '/content/ContentServlet',
         limitParam: 'count',
         pageParam: false,
         extraParams: {
