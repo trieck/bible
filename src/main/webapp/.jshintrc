@@ -1,0 +1,13 @@
+{
+  "browser": true,
+  "devel": true,
+  "undef": true,
+  "eqeqeq": true,
+  "scripturl": true,
+  "laxbreak": true,
+  "evil": true,
+  "predef": [
+    "Ext",
+    "pixieweb"
+  ]
+}
