@@ -35,7 +35,7 @@ Ext.define('bible.lib.Summary', {
     },
 
     initComponent: function () {
-        this.store = Ext.getStore('Content');
+        this.store = Ext.getStore('Summary');
 
         this.dockedItems = this.dockedItems || [];
         this.dockedItems.push({

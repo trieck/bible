@@ -1,4 +1,4 @@
-Ext.define('bible.model.Content', {
+Ext.define('bible.model.Summary', {
     extend: 'Ext.data.Model',
     fields: [
         { name: 'docid', type: 'int', mapping: '@docid' },

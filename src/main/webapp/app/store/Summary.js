@@ -1,6 +1,6 @@
-Ext.define('bible.store.Content', {
+Ext.define('bible.store.Summary', {
     extend: 'Ext.data.Store',
-    model: 'bible.model.Content',
+    model: 'bible.model.Summary',
     requires: [ 'bible.lib.CustomXmlReader' ],
     pageSize: 25,
     proxy: {

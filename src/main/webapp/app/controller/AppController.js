@@ -1,6 +1,6 @@
 Ext.define('bible.controller.AppController', {
     extend: 'Ext.app.Controller',
-    stores: [ 'Content' ],
+    stores: [ 'Summary' ],
 
     init: function () {
         this.control({
@@ -15,13 +15,13 @@ Ext.define('bible.controller.AppController', {
     },
 
     onClearClick: function (trigger) {
-        var store = Ext.getStore('Content');
+        var store = Ext.getStore('Summary');
         trigger.setValue(Ext.emptyString);
         store.removeAll();
     },
 
     onSearchClick: function () {
-        var store = Ext.getStore('Content');
+        var store = Ext.getStore('Summary');
         store.loadPage(1);
     },
 
