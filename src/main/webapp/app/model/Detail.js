@@ -1,4 +1,4 @@
-Ext.define('bible.model.Summary', {
+Ext.define('bible.model.Detail', {
     extend: 'Ext.data.Model',
     uses: [ 'bible.lib.Highlighter' ],
     fields: [
