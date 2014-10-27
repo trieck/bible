@@ -1,7 +1,7 @@
-Ext.define('pixieweb.store.Content', {
+Ext.define('bible.store.Content', {
     extend: 'Ext.data.Store',
-    model: 'pixieweb.model.Content',
-    requires: [ 'pixieweb.lib.CustomXmlReader' ],
+    model: 'bible.model.Content',
+    requires: [ 'bible.lib.CustomXmlReader' ],
     pageSize: 25,
     proxy: {
         type: 'ajax',

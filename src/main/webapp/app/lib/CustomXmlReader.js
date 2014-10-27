@@ -1,7 +1,6 @@
-Ext.define('pixieweb.lib.CustomXmlReader', {
+Ext.define('bible.lib.CustomXmlReader', {
     extend: 'Ext.data.XmlReader',
     alias: 'reader.custom-xml',
-
 
     getNodeValue: function (node) {
         var ss = new XMLSerializer(), output = "";

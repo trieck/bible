@@ -1,13 +1,12 @@
-Ext.define('pixieweb.lib.Viewport', {
+Ext.define('bible.lib.Viewport', {
     extend: 'Ext.Viewport',
-    alias: 'pixielib-viewport',
-    title: 'Pixie Search Engine',
+    alias: 'bible-viewport',
     layout: 'border',
     defaults: {
         split: true
     },
 
-    requires: [ 'pixieweb.lib.Summary' ],
+    requires: [ 'bible.lib.Summary', 'bible.lib.Details' ],
 
     items: [
         {
@@ -79,10 +78,7 @@ Ext.define('pixieweb.lib.Viewport', {
         },
         {
             region: 'east',
-            title: 'Details',
-            collapsible: true,
-            split: true,
-            width: 300
+            xtype: 'details'
         }, {
             region: 'center',
             xtype: 'summary-grid'
@@ -90,7 +86,7 @@ Ext.define('pixieweb.lib.Viewport', {
     ],
 
     initComponent: function () {
-        Ext.QuickTips.init();
+        Ext.tip.QuickTipManager.init();
         this.callParent(arguments);
     }
 });

@@ -1,9 +1,9 @@
 Ext.application({
-	name: 'pixieweb',
-	appFolder: 'app',
-	controllers: ['AppController'],
-	uses: 'pixieweb.lib.Viewport',
-	launch: function () {
-		Ext.create('pixielib-viewport');
-	}
+    name: 'bible',
+    appFolder: 'app',
+    controllers: [ 'AppController' ],
+    uses: 'bible.lib.Viewport',
+    launch: function () {
+        Ext.create('bible-viewport');
+    }
 });

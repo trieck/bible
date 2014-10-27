@@ -1,14 +1,19 @@
-Ext.define('pixieweb.model.Content', {
+Ext.define('bible.model.Content', {
     extend: 'Ext.data.Model',
-    fields: [ 'book', 'chapter', 'verse', {
-        name: 'text', convert: function (value) {
+    fields: [
+        { name: 'docid', type: 'int', mapping: '@docid' },
+        { name: 'book', type: 'string' },
+        { name: 'chapter', type: 'int' },
+        { name: 'verse', type: 'int' },
+        {
+            name: 'text', convert: function (value) {
             if (value) {
-                // highlight
+                // highlight tags to HTML
                 value = value.replace(/<highlight>/g, "<span class=\"highlight\">");
                 value = value.replace(/<\/highlight>/g, "</span>");
             }
-            
+
             return value;
         }
-    } ]
+        } ]
 });

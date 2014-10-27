@@ -1,12 +1,15 @@
-Ext.define('pixieweb.controller.AppController', {
+Ext.define('bible.controller.AppController', {
     extend: 'Ext.app.Controller',
-    stores: ['Content'],
+    stores: [ 'Content' ],
 
     init: function () {
         this.control({
             "#searchText": {
                 clearClick: this.onClearClick,
                 searchClick: this.onSearchClick
+            },
+            "#summaryGrid": {
+                select: this.onSelect
             }
         });
     },
@@ -17,8 +20,13 @@ Ext.define('pixieweb.controller.AppController', {
         store.removeAll();
     },
 
-    onSearchClick: function (trigger, event) {
+    onSearchClick: function () {
         var store = Ext.getStore('Content');
         store.loadPage(1);
+    },
+
+    onSelect: function (model, rec) {
+        var details = Ext.getCmp("detailsView");
+        details.fireEvent("select", model, rec);
     }
 });

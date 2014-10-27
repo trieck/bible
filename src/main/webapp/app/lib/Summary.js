@@ -1,7 +1,8 @@
-Ext.define('pixieweb.lib.Summary', {
+Ext.define('bible.lib.Summary', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.summary-grid',
     title: 'Summary',
+    id: 'summaryGrid',
     columns: [
         {
             text: 'Verse',
@@ -44,7 +45,22 @@ Ext.define('pixieweb.lib.Summary', {
             displayInfo: true
         });
 
+        this.on('selectionchange', this.onSelect, this);
+
         this.callParent(arguments);
+    },
+
+    /**
+     * React to a grid item being selected
+     * @private
+     * @param {Ext.selection.Model} model The selection model
+     * @param {Array} selections An array of selections
+     */
+    onSelect: function (model, selections) {
+        var selected = selections[ 0 ];
+        if (selected) {
+            this.fireEvent('select', model, selected);
+        }
     }
 });
 
