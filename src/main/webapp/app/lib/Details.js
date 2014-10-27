@@ -8,17 +8,12 @@ Ext.define('bible.lib.Details', {
     width: 300,
 
     initComponent: function () {
-        this.addListener("select", this.onSelect);
         this.callParent(arguments);
     },
 
-    /**
-     * Fires when a grid row is selected
-     * @private
-     * @param {Ext.selection.Model} model
-     * @param {Ext.data.Model} record
-     */
-    onSelect: function (model, record) {
+    load: function (record) {
         var docid = record.get("docid");
+        var store = Ext.getStore('Detail');
+        store.load({ params: { docid: docid } });
     }
 });

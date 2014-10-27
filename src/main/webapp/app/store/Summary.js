@@ -31,6 +31,16 @@ Ext.define('bible.store.Summary', {
             proxy.setExtraParam('db', db);
             proxy.setExtraParam('query', query);
             proxy.setExtraParam('start', start);
+        },
+
+        load: function (store, records, successful, eOpts) {
+            if (successful) {
+                var reader = store.getProxy().getReader();
+                var root = reader.xmlData.documentElement;
+                store.db = reader.getNodeValue(Ext.DomQuery.selectNode("@db", root));
+                store.query = reader.getNodeValue(Ext.DomQuery.selectNode("@query", root));
+                store.query_time = reader.getNodeValue(Ext.DomQuery.selectNode("@query-time", root));
+            }
         }
     }
 });

@@ -1,6 +1,6 @@
 Ext.define('bible.controller.AppController', {
     extend: 'Ext.app.Controller',
-    stores: [ 'Summary' ],
+    stores: [ 'Summary', 'Detail' ],
 
     init: function () {
         this.control({
@@ -9,7 +9,7 @@ Ext.define('bible.controller.AppController', {
                 searchClick: this.onSearchClick
             },
             "#summaryGrid": {
-                select: this.onSelect
+                selectionchange: this.onSelect
             }
         });
     },
@@ -25,8 +25,11 @@ Ext.define('bible.controller.AppController', {
         store.loadPage(1);
     },
 
-    onSelect: function (model, rec) {
-        var details = Ext.getCmp("detailsView");
-        details.fireEvent("select", model, rec);
+    onSelect: function (model, selections) {
+        var selected = selections[ 0 ],
+            details = Ext.getCmp("detailsView");
+        if (selected) {
+            details.load(selected);
+        }
     }
 });
