@@ -5,17 +5,45 @@ Ext.define('bible.lib.Details', {
     width: 300,
     layout: 'fit',
 
-    items: [ {
-        xtype: 'dataview',
-        padding: '5',
-        title: 'Details',
-        tpl: [
-            '<tpl for=".">',
-            '<h2>{book} {chapter}:{verse}</h2>',
-            '<div>{text}</div><br/>',
-            '</tpl>' ],
-        store: 'Detail'
-    } ],
+    items: [
+        {
+            title: 'Details',
+            items: [
+                {
+                    xtype: 'toolbar',
+                    items: [
+                        {
+                            xtype: 'button',
+                            text: 'Chapter',
+                            tooltip: { text: 'Read this Chapter' },
+                            focusCls: '',
+                            id: 'chapterButton',
+                            iconCls: 'chapter-icon',
+                            iconAlign: 'top'
+                        },
+                        {
+                            xtype: 'button',
+                            text: 'Book',
+                            tooltip: { text: 'Read this Book' },
+                            focusCls: '',
+                            id: 'bookButton',
+                            iconCls: 'book-icon',
+                            iconAlign: 'top'
+                        }
+                    ]
+                },
+                {
+                    xtype: 'dataview',
+                    padding: '0 10 0 10',
+                    tpl: [
+                        '<tpl for=".">',
+                        '<h2>{book} {chapter}:{verse}</h2>',
+                        '<div>{text}</div><br/>',
+                        '</tpl>' ],
+                    store: 'Detail'
+                }
+            ]
+        } ],
 
     initComponent: function () {
         this.tabBar = {

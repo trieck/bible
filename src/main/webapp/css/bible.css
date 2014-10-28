@@ -2,3 +2,11 @@
     color: #A00000;
     font-weight: 800;
 }
+
+.chapter-icon {
+    background-image: url(../images/chapter.png);
+}
+
+.book-icon {
+    background-image: url(../images/book.png);
+}
