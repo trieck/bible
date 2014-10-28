@@ -1,6 +1,6 @@
 Ext.define('bible.store.Detail', {
     extend: 'Ext.data.Store',
-    model: 'bible.model.Detail',
+    model: 'bible.model.Record',
     requires: [ 'bible.lib.CustomXmlReader' ],
     pageSize: 1,
     proxy: {
