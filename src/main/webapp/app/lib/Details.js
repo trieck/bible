@@ -6,6 +6,7 @@ Ext.define('bible.lib.Details', {
     collapsible: true,
     split: true,
     width: 300,
+    padding: '5',
     tpl: [
         '<tpl for=".">',
         '<h2>{book} {chapter}:{verse}</h2>',

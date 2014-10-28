@@ -25,8 +25,11 @@ Ext.define('bible.controller.AppController', {
     },
 
     onSearchClick: function () {
-        var store = Ext.getStore("Summary");
-        store.loadPage(1);
+        var summary = Ext.getStore("Summary"),
+            detail = Ext.getStore("Detail");
+
+        summary.loadPage(1);
+        detail.removeAll();
     },
 
     onSelect: function (model, selections) {
