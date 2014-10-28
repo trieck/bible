@@ -15,21 +15,27 @@ Ext.define('bible.controller.AppController', {
     },
 
     onClearClick: function (trigger) {
-        var store = Ext.getStore('Summary');
+        var summary = Ext.getStore("Summary"),
+            detail = Ext.getStore("Detail");
+
+        summary.removeAll();
+        detail.removeAll();
+
         trigger.setValue(Ext.emptyString);
-        store.removeAll();
     },
 
     onSearchClick: function () {
-        var store = Ext.getStore('Summary');
+        var store = Ext.getStore("Summary");
         store.loadPage(1);
     },
 
     onSelect: function (model, selections) {
-        var selected = selections[ 0 ],
-            details = Ext.getCmp("detailsView");
-        if (selected) {
-            details.load(selected);
+        var record = selections[ 0 ], docid, store;
+
+        if (record) {
+            docid = record.get("docid");
+            store = Ext.getStore("Detail");
+            store.load({ params: { docid: docid } });
         }
     }
 });

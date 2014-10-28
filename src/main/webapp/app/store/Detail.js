@@ -2,6 +2,7 @@ Ext.define('bible.store.Detail', {
     extend: 'Ext.data.Store',
     model: 'bible.model.Detail',
     requires: [ 'bible.lib.CustomXmlReader' ],
+    pageSize: 1,
     proxy: {
         type: 'ajax',
         url: '/content/ContentServlet',
@@ -23,12 +24,10 @@ Ext.define('bible.store.Detail', {
     listeners: {
         beforeload: function (store, operation) {
             var proxy = store.getProxy(),
-                summary = Ext.getStore("Summary"),
-                db = summary.db,
-                query = summary.query;
+                summary = Ext.getStore("Summary");
 
-            proxy.setExtraParam('db', db);
-            proxy.setExtraParam('query', query);
+            proxy.setExtraParam('db', summary.db);
+            proxy.setExtraParam('query', summary.query);
         }
     }
 });
