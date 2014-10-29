@@ -1,6 +1,7 @@
 Ext.define('bible.lib.Details', {
     extend: 'Ext.tab.Panel',
     alias: 'widget.details',
+    id: 'tabPanel',
     split: true,
     width: 300,
     layout: 'fit',
@@ -51,7 +52,6 @@ Ext.define('bible.lib.Details', {
                     },
 
                     onDataChanged: function (store) {
-                        var me = this;
                         var count = store.getCount(),
                             chapterButton = Ext.getCmp('chapterButton'),
                             bookButton = Ext.getCmp('bookButton');

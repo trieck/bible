@@ -1,44 +1,45 @@
-Ext.define('bible.store.Detail', {
+Ext.define('bible.store.Chapter', {
     extend: 'Ext.data.Store',
     model: 'bible.model.Record',
     requires: [ 'bible.lib.CustomXmlReader' ],
-    pageSize: 1,
+    pageSize: 25,
     proxy: {
         type: 'ajax',
         url: '/content/ContentServlet',
-        limitParam: false,
+        limitParam: 'count',
         pageParam: false,
-        startParam: false,
         extraParams: {
-            'function': 'getdoc'
+            'function': 'search'
         },
 
         reader: {
             type: 'custom-xml',
             record: 'record',
+            root: 'results',
             idProperty: '@docid',
-            totalProperty: false,
+            totalProperty: '@count',
             successProperty: false
         }
     },
     listeners: {
         beforeload: function (store, operation) {
             var proxy = store.getProxy(),
-                summary = Ext.getStore("Summary");
+                detail = Ext.getStore("Detail"),
+                query = Ext.String.format("book[{0}] chapter[{1}]", detail.book, detail.chapter),
+                start = (operation.start || 0) + 1;
 
-            proxy.setExtraParam('db', summary.db);
-            proxy.setExtraParam('query', summary.query);
+            proxy.setExtraParam('db', store.db);
+            proxy.setExtraParam('query', query);
+            proxy.setExtraParam('start', start);
         },
 
-        load: function (store, records, successful, eOpts) {
+        load: function (store, records, successful) {
             if (successful) {
                 var reader = store.getProxy().getReader();
                 var root = reader.xmlData.documentElement;
                 store.db = reader.getNodeValue(Ext.DomQuery.selectNode("@db", root));
-                store.docid = reader.getNodeValue(Ext.DomQuery.selectNode("@docid", root));
                 store.query = reader.getNodeValue(Ext.DomQuery.selectNode("@query", root));
-                store.book = reader.getNodeValue(Ext.DomQuery.selectNode("//book", root));
-                store.chapter = reader.getNodeValue(Ext.DomQuery.selectNode("//chapter", root));
+                store.query_time = reader.getNodeValue(Ext.DomQuery.selectNode("@query-time", root));
             }
         }
     }
