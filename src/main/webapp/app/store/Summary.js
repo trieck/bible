@@ -33,7 +33,7 @@ Ext.define('bible.store.Summary', {
             proxy.setExtraParam('start', start);
         },
 
-        load: function (store, records, successful, eOpts) {
+        load: function (store, records, successful) {
             if (successful) {
                 var reader = store.getProxy().getReader();
                 var root = reader.xmlData.documentElement;
