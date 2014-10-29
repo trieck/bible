@@ -19,7 +19,8 @@ Ext.define('bible.lib.Details', {
                             focusCls: '',
                             id: 'chapterButton',
                             iconCls: 'chapter-icon',
-                            iconAlign: 'top'
+                            iconAlign: 'top',
+                            disabled: true
                         },
                         {
                             xtype: 'button',
@@ -28,7 +29,8 @@ Ext.define('bible.lib.Details', {
                             focusCls: '',
                             id: 'bookButton',
                             iconCls: 'book-icon',
-                            iconAlign: 'top'
+                            iconAlign: 'top',
+                            disabled: true
                         }
                     ]
                 },
@@ -40,7 +42,27 @@ Ext.define('bible.lib.Details', {
                         '<h2>{book} {chapter}:{verse}</h2>',
                         '<div>{text}</div><br/>',
                         '</tpl>' ],
-                    store: 'Detail'
+                    store: 'Detail',
+
+                    listeners: {
+                        beforerender: function (view) {
+                            view.store.addListener('datachanged', view.onDataChanged, view);
+                        }
+                    },
+
+                    onDataChanged: function (store) {
+                        var me = this;
+                        var count = store.getCount(),
+                            chapterButton = Ext.getCmp('chapterButton'),
+                            bookButton = Ext.getCmp('bookButton');
+                        if (count > 0) {
+                            chapterButton.enable();
+                            bookButton.enable();
+                        } else {
+                            chapterButton.disable();
+                            bookButton.disable();
+                        }
+                    }
                 }
             ]
         } ],
