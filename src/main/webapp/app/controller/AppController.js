@@ -1,7 +1,7 @@
 Ext.define('bible.controller.AppController', {
     extend: 'Ext.app.Controller',
     stores: [ 'Summary', 'Detail' ],
-    uses: [ 'bible.lib.Chapter' ],
+    uses: [ 'bible.lib.Chapter', 'bible.lib.Book' ],
 
     init: function () {
         this.control({
@@ -13,7 +13,10 @@ Ext.define('bible.controller.AppController', {
                 selectionchange: this.onSelect
             },
             '#chapterButton': {
-                click: this.onChapterClick,
+                click: this.onChapterClick
+            },
+            '#bookButton': {
+                click: this.onBookClick
             }
         });
     },
@@ -56,6 +59,23 @@ Ext.define('bible.controller.AppController', {
         if (Ext.isEmpty(tab)) {
             tab = panel.add({
                 xtype: 'chapter-tab',
+                title: title
+            });
+        }
+
+        panel.setActiveTab(tab);
+    },
+
+    onBookClick: function () {
+        var store = Ext.getStore("Detail"),
+            panel = Ext.getCmp('tabPanel'),
+            title = Ext.String.format("{0}", store.book),
+            selector = Ext.String.format("panel[title='{0}']", title),
+            tab = panel.child(selector);
+
+        if (Ext.isEmpty(tab)) {
+            tab = panel.add({
+                xtype: 'book-tab',
                 title: title
             });
         }
