@@ -3,7 +3,7 @@ Ext.define('bible.lib.Details', {
     alias: 'widget.details',
     id: 'tabPanel',
     split: true,
-    width: 300,
+    width: 400,
     layout: 'fit',
 
     items: [
@@ -44,7 +44,6 @@ Ext.define('bible.lib.Details', {
                         '<div>{text}</div><br/>',
                         '</tpl>' ],
                     store: 'Detail',
-
                     listeners: {
                         beforerender: function (view) {
                             view.store.addListener('datachanged', view.onDataChanged, view);

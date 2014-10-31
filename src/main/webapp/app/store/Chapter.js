@@ -28,7 +28,7 @@ Ext.define('bible.store.Chapter', {
                 query = Ext.String.format("book[{0}] chapter[{1}]", detail.book, detail.chapter),
                 start = (operation.start || 0) + 1;
 
-            proxy.setExtraParam('db', store.db);
+            proxy.setExtraParam('db', detail.db);
             proxy.setExtraParam('query', query);
             proxy.setExtraParam('start', start);
         },

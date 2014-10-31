@@ -3,9 +3,24 @@ Ext.define('bible.model.Record', {
     uses: [ 'bible.lib.Highlighter' ],
     fields: [
         { name: 'docid', type: 'int', mapping: '@docid' },
-        { name: 'book', type: 'string' },
-        { name: 'chapter', type: 'int' },
-        { name: 'verse', type: 'int' },
+        {
+            name: 'book',
+            convert: function (value) {
+                return bible.lib.Highlighter.highlight(value);
+            }
+        },
+        {
+            name: 'chapter',
+            convert: function (value) {
+                return bible.lib.Highlighter.highlight(value);
+            }
+        },
+        {
+            name: 'verse',
+            convert: function (value) {
+                return bible.lib.Highlighter.highlight(value);
+            }
+        },
         {
             name: 'text',
             convert: function (value) {

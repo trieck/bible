@@ -1,6 +1,7 @@
 Ext.define('bible.controller.AppController', {
     extend: 'Ext.app.Controller',
     stores: [ 'Summary', 'Detail' ],
+    uses: [ 'bible.lib.Chapter' ],
 
     init: function () {
         this.control({
@@ -10,6 +11,9 @@ Ext.define('bible.controller.AppController', {
             },
             "#summaryGrid": {
                 selectionchange: this.onSelect
+            },
+            '#chapterButton': {
+                click: this.onChapterClick,
             }
         });
     },
@@ -40,5 +44,22 @@ Ext.define('bible.controller.AppController', {
             store = Ext.getStore("Detail");
             store.load({ params: { docid: docid } });
         }
+    },
+
+    onChapterClick: function () {
+        var store = Ext.getStore("Detail"),
+            panel = Ext.getCmp('tabPanel'),
+            title = Ext.String.format("{0} {1}", store.book, store.chapter),
+            selector = Ext.String.format("panel[title='{0}']", title),
+            tab = panel.child(selector);
+
+        if (Ext.isEmpty(tab)) {
+            tab = panel.add({
+                xtype: 'chapter-tab',
+                title: title
+            });
+        }
+
+        panel.setActiveTab(tab);
     }
 });

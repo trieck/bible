@@ -10,3 +10,9 @@
 .book-icon {
     background-image: url(../images/book.png);
 }
+
+.cite {
+    font-size: .75em;
+    font-weight: normal;
+    color: darkgray;
+}

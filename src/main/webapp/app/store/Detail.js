@@ -22,7 +22,7 @@ Ext.define('bible.store.Detail', {
         }
     },
     listeners: {
-        beforeload: function (store, operation) {
+        beforeload: function (store) {
             var proxy = store.getProxy(),
                 summary = Ext.getStore("Summary");
 
@@ -30,7 +30,7 @@ Ext.define('bible.store.Detail', {
             proxy.setExtraParam('query', summary.query);
         },
 
-        load: function (store, records, successful, eOpts) {
+        load: function (store, records, successful) {
             if (successful) {
                 var reader = store.getProxy().getReader();
                 var root = reader.xmlData.documentElement;
