@@ -59,7 +59,9 @@ Ext.define('bible.controller.AppController', {
         if (Ext.isEmpty(tab)) {
             tab = panel.add({
                 xtype: 'chapter-tab',
-                title: title
+                title: title,
+                book: store.book,
+                chapter: store.chapter
             });
         }
 
@@ -76,7 +78,8 @@ Ext.define('bible.controller.AppController', {
         if (Ext.isEmpty(tab)) {
             tab = panel.add({
                 xtype: 'book-tab',
-                title: title
+                title: title,
+                book: store.book
             });
         }
 

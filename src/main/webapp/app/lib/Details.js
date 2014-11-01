@@ -53,10 +53,12 @@ Ext.define('bible.lib.Details', {
                     onDataChanged: function (store) {
                         var count = store.getCount(),
                             chapterButton = Ext.getCmp('chapterButton'),
-                            bookButton = Ext.getCmp('bookButton');
+                            bookButton = Ext.getCmp('bookButton'),
+                            tabPanel = Ext.getCmp('tabPanel');
                         if (count > 0) {
                             chapterButton.enable();
                             bookButton.enable();
+                            tabPanel.setActiveTab(0);
                         } else {
                             chapterButton.disable();
                             bookButton.disable();
