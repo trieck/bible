@@ -39,7 +39,7 @@ Ext.define('bible.lib.Viewport', {
                             store: Ext.create('Ext.data.Store', {
                                 fields: [ 'name', 'value' ],
                                 data: [
-                                    { name: 'ASV', value: 'ASV' },
+                                    { name: 'ASV', value: 'asv' },
                                     { name: 'Basic English', value: 'basic-english' },
                                     { name: 'KJV', value: 'kjv' },
                                     { name: 'NIV', value: 'niv' }
