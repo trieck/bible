@@ -13,6 +13,7 @@ Ext.define('bible.lib.Chapter', {
             padding: '10',
             autoScroll: true,
             tpl: [
+                '<h2>' + config.book + ' ' + config.chapter + '</h2>',
                 '<tpl for=".">',
                 '<cite class="cite">{verse}</cite>&nbsp;{text}',
                 '</tpl>' ],

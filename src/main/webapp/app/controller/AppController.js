@@ -52,7 +52,7 @@ Ext.define('bible.controller.AppController', {
     onChapterClick: function () {
         var store = Ext.getStore("Detail"),
             panel = Ext.getCmp('tabPanel'),
-            title = Ext.String.format("{0} {1}", store.book, store.chapter),
+            title = Ext.String.format("{0} {1} ({2})", store.book, store.chapter, store.db.toUpperCase()),
             selector = Ext.String.format("panel[title='{0}']", title),
             tab = panel.child(selector);
 
@@ -71,7 +71,7 @@ Ext.define('bible.controller.AppController', {
     onBookClick: function () {
         var store = Ext.getStore("Detail"),
             panel = Ext.getCmp('tabPanel'),
-            title = Ext.String.format("{0}", store.book),
+            title = Ext.String.format("{0} ({1})", store.book, store.db.toUpperCase()),
             selector = Ext.String.format("panel[title='{0}']", title),
             tab = panel.child(selector);
 

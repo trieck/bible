@@ -13,9 +13,21 @@ Ext.define('bible.lib.Book', {
             autoScroll: true,
             padding: '10',
             tpl: [
+                '<h2>' + config.book + '</h2>',
+                '{% this.chapter = undefined; %}',
                 '<tpl for=".">',
+                '{[this.renderChapter(values)]}',
                 '<cite class="cite">{verse}</cite>&nbsp;{text}',
-                '</tpl>' ],
+                '</tpl>',
+                {
+                    renderChapter: function (values) {
+                        if (this.chapter !== values.chapter) {
+                            this.chapter = values.chapter;
+                            return Ext.String.format("<h3>Chapter {0}</h3>", values.chapter);
+                        }
+                    }
+                }
+            ],
             store: store
         });
 
