@@ -42,7 +42,8 @@ Ext.define('bible.lib.Viewport', {
                                     { name: 'ASV', value: 'asv' },
                                     { name: 'Basic English', value: 'basic-english' },
                                     { name: 'KJV', value: 'kjv' },
-                                    { name: 'NIV', value: 'niv' }
+                                    { name: 'NIV', value: 'niv' },
+                                    { name: 'World English Bible', value: 'web' }
                                 ]
                             })
                         },
