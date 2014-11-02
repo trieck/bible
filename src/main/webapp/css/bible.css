@@ -11,8 +11,8 @@
     background-image: url(../images/book.png);
 }
 
-.cite {
-    font-size: .75em;
+.verse {
+    font-size: .8em;
     font-weight: normal;
-    color: darkgray;
+    color: firebrick;
 }

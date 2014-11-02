@@ -17,7 +17,7 @@ Ext.define('bible.lib.Book', {
                 '{% this.chapter = undefined; %}',
                 '<tpl for=".">',
                 '{[this.renderChapter(values)]}',
-                '<cite class="cite">{verse}</cite>&nbsp;{text}',
+                '<sup class="verse">{verse}</sup>&nbsp;{text}',
                 '</tpl>',
                 {
                     renderChapter: function (values) {

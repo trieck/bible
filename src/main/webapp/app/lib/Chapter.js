@@ -15,7 +15,7 @@ Ext.define('bible.lib.Chapter', {
             tpl: [
                 '<h2>' + config.book + ' ' + config.chapter + '</h2>',
                 '<tpl for=".">',
-                '<cite class="cite">{verse}</cite>&nbsp;{text}',
+                '<sup class="verse">{verse}</sup>&nbsp;{text}',
                 '</tpl>' ],
             store: store
         });
