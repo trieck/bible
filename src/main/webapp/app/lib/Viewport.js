@@ -45,7 +45,6 @@ Ext.define('bible.lib.Viewport', {
                                     { name: 'Geneva', value: 'geneva' },
                                     { name: 'KJV', value: 'kjv' },
                                     { name: 'NIV', value: 'niv' },
-                                    { name: 'Open English Bible', value: 'oeb' },
                                     { name: 'Latin Vulgate', value: 'vulgate' },
                                     { name: 'World English Bible', value: 'web' }
                                 ]
